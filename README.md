@@ -5,15 +5,15 @@ A Quoting System for Joe's Automotive
 ### Users
 Every User has a/an: <br/>
 id : Integer <br/>
-fullName : String
-address : String
-telephone : String
-cars : List of Car
-isManager : Boolean
-isEmployee : Boolean
-isCustomer : Boolean
-canGenerateQuoet : Boolean
-canLookupCustomer : Boolean
+fullName : String <br/>
+address : String <br/>
+telephone : String <br/>
+cars : List of Car <br/>
+isManager : Boolean <br/>
+isEmployee : Boolean <br/>
+isCustomer : Boolean <br/>
+canGenerateQuoet : Boolean <br/>
+canLookupCustomer : Boolean <br/>
 
 
 
