@@ -4,7 +4,7 @@ A Quoting System for Joe's Automotive
 ## Application Entry Point
 ### App.py (Located at Root Directory)
 
-## Entities
+## Models/Entities
 ### Part
 id : Integer <br/>
 name : String <br/>
@@ -119,6 +119,45 @@ removeCarById(user:User,carId:Integer) -> Void <br/>
 getCars(user:User) -> List of Car <br/>
 getCarById(user:User,carId:Integer) -> Car 
 
+## Views
+### Car View : CarView(car:Car) -> Access to Methods
+Description:  <br/>
+A View containing functions that can be view details of any Car. <br/>
 
+Parameters: <br/>
+car : Car <br/>
 
+Methods: <br/>
+display() -> Terminal View 
+
+### Part View : PartView(part:Part) -> Access to Methods
+Description:  <br/>
+A View containing functions that can be view details of any Part. <br/>
+
+Parameters: <br/>
+part : Part <br/>
+
+Methods: <br/>
+display() -> Terminal View 
+
+### User View : PartView(user:User) -> Access to Methods
+Description:  <br/>
+A View containing functions that can be view details of any User. <br/>
+
+Parameters: <br/>
+user : User <br/>
+
+Methods: <br/>
+display() -> Terminal View 
+
+### Quote View : QuoteView(quote:Quote) -> Access to Methods
+Description:  <br/>
+A View containing functions that can be view details of any Quote. <br/>
+
+Parameters: <br/>
+quote : Quote <br/>
+
+Methods: <br/>
+display() -> Terminal View <br/>
+print() -> Terminal View & Writes Quote to txt File and Saves to Root Directory.
 
