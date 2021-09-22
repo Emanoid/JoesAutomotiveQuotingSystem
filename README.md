@@ -3,6 +3,11 @@ A Quoting System for Joe's Automotive
 
 ## Application Entry Point
 ### App.py (Located at Root Directory)
+Will request a directory path, enter your local Application's root directory. <br/>
+If program crashes?<br/>
+Manually enter path into the "PATHBACKUP" variable and substitute "PATH" with "PATHBACKUP" wherever "PATH" appears.</br>
+This should resolve the issue.
+
 
 ## Models/Entities
 ### Part
@@ -108,9 +113,9 @@ baseController : BaseController <br/>
 
 Methods: <br/>
 createUser(fullName:String,address:String,telephone:String,isManager:Boolean,isEmployee:Boolean,isCustomer:Boolean) -> User <br/>
-lookupCustomer(user:User,customerTelephone:String) -> User<br/>
-generateQuote(user:User,customerTelephone:String) -> Quote<br/>
-printQuote(user:User,customerTelephone:String) -> Quote<br/>
+lookupCustomer(user:User,customerTelephone:String) -> User & Terminal View of User<br/>
+generateQuote(user:User,customerTelephone:String) -> Quote & Terminal View of Quote<br/>
+printQuote(user:User,customerTelephone:String) -> Quote, Terminal Viwe of Quote, and writes Quote to text file in root directory <br/>
 removeUser(user:User) -> Void <br/>
 removeUserById(userId:Integer) -> Void <br/>
 addCar(user:User,car:Car) -> Void <br/>
@@ -159,5 +164,5 @@ quote : Quote <br/>
 
 Methods: <br/>
 display() -> Terminal View <br/>
-print() -> Terminal View & Writes Quote to txt File and Saves to Root Directory.
+print() -> Terminal View & Writes Quote to text File and Saves to Root Directory.
 
