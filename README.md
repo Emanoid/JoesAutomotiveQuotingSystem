@@ -12,14 +12,14 @@ cost : Integer <br/>
 laborCost : Integer <br/>
 salesTax : Integer <br/>
 totalCost : Integer <br/>
-carMakeModel : String <br/>
+carMakeModel : String 
 
 ### Car
 id : Integer <br/>
 make : String <br/>
 model : String <br/>
 year : String <br/>
-parts : List of Part <br/>
+parts : List of Part 
 
 ### User
 id : Integer <br/>
@@ -31,11 +31,11 @@ isManager : Boolean <br/>
 isEmployee : Boolean <br/>
 isCustomer : Boolean <br/>
 canGenerateQuoet : Boolean <br/>
-canLookupCustomer : Boolean <br/>
+canLookupCustomer : Boolean 
 
 ### Quote
 id : Integer <br/>
-customer : User <br/>
+customer : User 
 
 ## Controllers
 ### Base Controller : BaseController(path:String) -> Access to Methods
@@ -57,7 +57,7 @@ Methods: <br/>
 generatePartId() -> Integer <br/>
 generateCarId() -> Integer <br/>
 generateQuoteId() -> Integer <br/>
-generateUserId() -> Integer <br/><br/>
+generateUserId() -> Integer 
 
 ### Cars Controller : CarsController(BaseController) -> Access to Methods
 Description:  <br/>
@@ -73,7 +73,7 @@ removeCarById(carId:Integer) -> Void <br/>
 addPart(car:Car, part: Part) -> Void <br/>
 addPartById(car:Car, partId:Integer) -> Void <br/>
 removePartById(car:Car, partId:Integer) -> Void <br/>
-getParts(car:Car) -> List of Part <br/><br/>
+getParts(car:Car) -> List of Part 
 
 
 
