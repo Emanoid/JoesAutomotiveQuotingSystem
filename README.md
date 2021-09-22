@@ -40,7 +40,7 @@ customer : User
 ## Controllers
 ### Base Controller : BaseController(path:String) -> Access to Methods
 Description:  <br/>
-A Controller containing functions that are used by all other controllers and serves as RAM for used objects/entities. <br/><br/>
+A Controller containing functions that are used by all other controllers and serves as RAM for used objects/entities. <br/>
 
 Parameters: <br/>
 path : String <br/>
@@ -51,7 +51,7 @@ userId : Integer <br/>
 users : List of User<br/>
 parts : List of Part<br/>
 cars : List of Car<br/>
-quotes : List of Quote<br/><br/>
+quotes : List of Quote<br/>
 
 Methods: <br/>
 generatePartId() -> Integer <br/>
@@ -61,10 +61,10 @@ generateUserId() -> Integer
 
 ### Cars Controller : CarsController(BaseController) -> Access to Methods
 Description:  <br/>
-A Controller containing functions that can be used by any Car. <br/><br/>
+A Controller containing functions that can be used by any Car. <br/>
 
 Parameters: <br/>
-baseController : BaseController <br/><br/>
+baseController : BaseController <br/>
 
 Methods: <br/>
 createCar(make:String, model:String, year:String) -> Car <br/>
