@@ -1,8 +1,14 @@
 class User:
-    def __init__(self, id, fullName, address, telephone, cars,isManager, isEmployee, isCustomer,canGenerateQuote,canLookupCustomer):
+    def __init__(self, id, firstName,lastName, street, city, state, zip, telephone, cars, isManager, isEmployee, isCustomer,canGenerateQuote,canLookupCustomer):
         self.id = id
-        self.fullName = fullName
-        self.address = address
+        self.firstName = firstName
+        self.lastName = lastName
+        self.fullName = firstName+" "+lastName
+        self.street = street
+        self.city = city
+        self.state = state
+        self.zip = zip
+        self.address = street+", "+city+", "+state+", "+zip+"."
         self.telephone = telephone
         self.cars = cars
         self.isManager = isManager

@@ -3,6 +3,7 @@ from Views.QuoteView import QuoteView
 from Views.UserView import UserView
 from Views.CarView import CarView
 from Controllers.QuotesController import QuotesController
+from Controllers.CarsController import CarsController
 
 class UsersController:
     def __init__(self, baseController):
@@ -10,7 +11,8 @@ class UsersController:
         import sys
         sys.path.insert(0,baseController.path)        
 
-    def createUser(self, fullName, address, telephone, isManager, isEmployee, isCustomer):
+    #To Create a New User
+    def createUser(self, firstName,lastName,street,city,state,zip, telephone, isManager, isEmployee, isCustomer):
         userId = self.baseController.generateUserId()
         canGenerateQuote = False
         canLookupCustomer = False
@@ -24,73 +26,67 @@ class UsersController:
             canGenerateQuote = False
             canLookupCustomer = False
         cars = []
-        newUser = User(userId, fullName, address, telephone, cars, isManager, isEmployee, isCustomer, canGenerateQuote, canLookupCustomer)
-        self.baseController.users.append(newUser)
+        newUser = User(userId, firstName, lastName,street,city,state,zip, telephone, cars, isManager, isEmployee, isCustomer, canGenerateQuote, canLookupCustomer)
+        self.baseController.users[telephone] = newUser
         return newUser
 
+    #Enables adding a Car to a given Customer 
+    def addCustomerCar(self,customer,make,model,year):
+        newCar = CarsController(self.baseController).createCar(make,model,year)
+        customer.cars.append(newCar)
+
+    #To get a view of all the Cars a Customer has
+    def getCustomerCars(self,customer):
+        for car in customer.cars:
+            CarView(car).display()
+    
+    #Enables a user to lookup the name address and phone number of a given customer
     def lookupCustomer(self, user, customerTelephone):
         if user.canLookupCustomer:
-            for customer in self.baseController.users:
-                if customer.telephone == customerTelephone:
-                    UserView(customer).display()
-                    return customer
-            print("Customer not found")
+            if customerTelephone in self.baseController.users:
+                UserView(self.baseController.users[customerTelephone]).display()
+            else: print("Customer with Telephone",customerTelephone,"not found")
         else:
-            print("User",user.fullName,"does not have permission to Lookup Customer")
+            print("Customer",user.fullName,"does not have permission to Lookup Customer")
 
-    def generateQuote(self, user, customerTelephone):
+    #Enables a user to generate a Quote for a given customer
+    def generateQuote(self, user, customerTelephone, service):
         if user.canGenerateQuote:
-            for customer in self.baseController.users:
-                if customer.telephone == customerTelephone:
-                    newQuote = QuotesController(self.baseController).createQuote(customer)
-                    QuoteView(newQuote).display()
-                    return newQuote
-            print("Customer not found")            
+            if customerTelephone in self.baseController.users:
+                newQuote = QuotesController(self.baseController).createQuote(self.baseController.users[customerTelephone])        
+                QuotesController(self.baseController).addService(newQuote,service)
+            else: print("Customer with Telephone",customerTelephone,"not found")
         else:
             print("User",user.fullName,"does not have permission to Generate Quote")
 
-    def printQuote(self, user, customerTelephone):
-        newQuote = self.generateQuote(user,customerTelephone)
-        if newQuote is not None:
-            QuoteView(newQuote).print()
-
-    def removeUser(self, user):
-        if user in self.baseController.users:
-            self.baseController.users.remove(user)
+    #Enables a user to display a Saved Quote for a given customer
+    def displayQuote(self, user, customerTelephone):
+        if user.canLookupCustomer:
+            if customerTelephone in self.baseController.quotes:
+                QuoteView(self.baseController.quotes[customerTelephone]).display()     
+            else: print("Customer with Telephone",customerTelephone,"has no Quote")   
         else:
-            print("User",user,"not found")
+            print("User",user.fullName,"does not have permission to Display Quote")
 
-    def removeUserById(self, userId):
-        for user in self.baseController.users:
-            if user.id == userId:
-                self.baseController.users.remove(user)
-                return
-        print("User",user,"not found")
+    #Enables a user to display & print a Saved Quote for a given customer
+    def printQuote(self, user, customerTelephone):
+        if user.canLookupCustomer:
+            if customerTelephone in self.baseController.quotes:
+                QuoteView(self.baseController.quotes[customerTelephone]).displayAll() 
+                QuoteView(self.baseController.quotes[customerTelephone]).print()  
+            else: print("Customer with Telephone",customerTelephone,"not found")        
+        else:
+            print("User",user.fullName,"does not have permission to Print Quote")
 
-    def addCar(self, user, car):
-        user.cars.append(car)
+    #Enables a user to remove a user with user telephone
+    def removeUser(self, user, userTelephone):
+        if user.canGenerateQuote:
+            if userTelephone in self.baseController.users:
+                self.baseController.users.pop(userTelephone)    
+            else: print("Customer with Telephone",userTelephone,"not found")    
+        else:
+            print("User",user.fullName,"does not have permission to Remove User")
 
-    def removeCar(self, user, car):
-        user.cars.remove(car)
-
-    def removeCarById(self, user, carId):
-        for car in user.cars:
-            if carId == car.id:
-                user.cars.remove(car)
-                return
-        print("Car Id",carId,"not found")
-
-    def getCars(self, user):
-        for car in user.cars:
-            CarView(car).display()
-        return user.cars
-
-    def getCarsById(self, user, carId):
-        for car in user.cars:
-            if carId == car.id:
-                CarView(car).display()
-                return car
-        print("Car Id",carId,"not found")
 
 
 
