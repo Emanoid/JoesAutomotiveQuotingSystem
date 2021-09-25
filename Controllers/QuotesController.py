@@ -6,23 +6,34 @@ class QuotesController:
         import sys
         sys.path.insert(0,baseController.path)  
 
+    #Creates a New Quote
     def createQuote(self, customer):
         quoteId = self.baseController.generateQuoteId()
-        newQuote = Quote(quoteId, customer)
-        self.baseController.quotes.append(newQuote)
+        services = []
+        newQuote = Quote(quoteId, customer, services)
+        self.baseController.quotes[customer.telephone] = newQuote
         return newQuote
-    
-    def removeQuote(self, quote):
-        if quote in self.baseController.quotes:
-            self.baseController.quotes.remove(quote)
-        else: print("Quote",quote.id,"not found")
 
-    def removeQuoteById(self, quoteId):
-        for quote in self.baseController.quotes:
-            if quoteId == quote.id:
-                self.baseController.quotes.remove(quote)
-                return
-        print("Quote",quote.id,"not found")
+    #Add a Service to a Quote
+    def addService(self, quote, service):
+        quote.services.append(service)
+
+    #To get a Quote by customerTelephone
+    def getQuote(self,customerTelephone):
+        if customerTelephone in self.baseController.quotes:
+            return self.baseController.quotes[customerTelephone]
+        else: print("Quote with Customer Telephone",customerTelephone,"not found")
+
+    #To return all Saved Quotes
+    def getQuotes(self):
+        return self.baseController.quotes.values()
+    
+    #To remove a Quote by customerTelephone
+    def removeQuote(self, customerTelephone):
+        if customerTelephone in self.baseController.quotes:
+            self.baseController.quotes.pop(customerTelephone)
+        else: print("Quote with Customer Telephone",customerTelephone,"not found")
+
 
 
 

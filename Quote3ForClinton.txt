@@ -1,0 +1,32 @@
+------------------------JOES AUTOMOTIVE QUOTE------------------------
+Quote ID: 3
+Customer Information-----------------------------
+Customer Name: Clinton Buford
+Customer Phone Number: 973-543-8967
+Customer Address: 43 Vilnius Manor, Aurora, NJ, 07050.
+Quote Information---------------------------------------------------
+For Car ID:5-------------------------------
+Car Make:Porche
+Car Model:Cayene
+For Service ID:3-------
+Service Name:Tire Replacement
+Parts:------------------
+Part Name:Continental 2055 Tire
+Part Charge: $400
+_________
+Part Name:Break Pad
+Part Charge: $150
+_________
+Total Charges for CAR ID:5---
+Total Part(s) Cost: $550
+Total Labor Cost: $150
+Total Sales Tax: $27.5
+Total Charges: $727.5
+
+------TOTAL FOR ALL CARS-------
+Total Part(s) Cost: $550
+Total Labor Cost: $150
+Total Sales Tax: $27.5
+Total Charges: $727.5
+------------------------QUOTE END------------------------
+

@@ -1,10 +1,9 @@
 class Part:
-    def __init__(self, id, name, cost, laborCost, salesTax, totalCost, carMakeModel):
+    def __init__(self, id, name, mainSupplierName ,cost):
         self.id = id
         self.name = name
+        self.mainSupplierName = mainSupplierName
         self.cost = cost
-        self.laborCost = laborCost
-        self.salesTax = salesTax
-        self.totalCost = totalCost
-        self.carMakeModel = carMakeModel
+
+
 
